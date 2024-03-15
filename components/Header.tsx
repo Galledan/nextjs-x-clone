@@ -23,16 +23,25 @@ const Header: React.FC<HeaderProps> = ({ label, showBackArrow }) => {
 
   return (
     <div className='border-b-[1px] border-neutral-800 p-5'>
-      <div className='flex flex-row  justify-between'>
-        <div className='flex flex-grow gap-4'>
-          {showBackArrow && (
-            <BiArrowBack
-              onClick={handleBack}
-              color='white'
-              size={20}
-              className='cursor-pointer hover:opacity-70 transition'
-            />
-          )}
+
+      {showBackArrow && (
+        <div className="flex flex-row items-center gap-2">
+
+          <BiArrowBack
+            onClick={handleBack}
+            color='white'
+            size={20}
+            className='cursor-pointer hover:opacity-70 transition'
+          />
+          <h1 className="text-white text-xl font-semibold">
+            {label}
+          </h1>
+        </div>
+
+      )}
+      {!showBackArrow && (
+        <div className='flex flex-row justify-between'>
+          <div className='flex flex-grow gap-4'>
           <div
             className={`flex justify-center items-center flex-grow cursor-pointer ${activeTab === 'forYou' ? 'font-bold' : ''}`}
             onClick={() => handleClick('forYou')}
@@ -45,11 +54,14 @@ const Header: React.FC<HeaderProps> = ({ label, showBackArrow }) => {
           >
             <p className={`text-white ${activeTab === 'following' ? 'border-b-2 border-blue-500' : ''}`}>Following</p>
           </div>
+          <div className='relative rounded-full h-14 w-14 flex items-center justify-center p-4 hover:bg-slate-300 hover:bg-opacity-10 cursor-pointer'>
+            <SlSettings size={18} color='white' />
+          </div>
         </div>
-        <div className='relative rounded-full h-14 w-14 flex items-center justify-center p-4 hover:bg-slate-300 hover:bg-opacity-10 cursor-pointer'>
-          <SlSettings size={18} color='white' />
         </div>
-      </div>
+
+
+      )}
     </div>
   )
 }
