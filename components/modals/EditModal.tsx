@@ -28,7 +28,7 @@ const EditModal = () => {
     setUsername(currentUser?.username)
     setBio(currentUser?.bio)
   }, [currentUser?.name, currentUser?.username, currentUser?.bio, currentUser?.profileImage, currentUser?.coverImage]);
-  
+
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = useCallback(async () => {
@@ -50,25 +50,25 @@ const EditModal = () => {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <ImageUpload value={profileImage} disabled={isLoading} onChange={(image) => setProfileImage(image)} label="Upload profile image" />
+      <ImageUpload value={profileImage} disabled={isLoading} onChange={(image) => setProfileImage(image)} label="Upload profile image" />  {/* Should be lower than 1MB and not big sized images */}
       <ImageUpload value={coverImage} disabled={isLoading} onChange={(image) => setCoverImage(image)} label="Upload cover image" />
       <Input
         placeholder="Name"
         onChange={(e) => setName(e.target.value)}
         value={name}
-        disabled={isLoading}  
+        disabled={isLoading}
       />
-      <Input 
+      <Input
         placeholder="Username"
         onChange={(e) => setUsername(e.target.value)}
         value={username}
-        disabled={isLoading} 
+        disabled={isLoading}
       />
-      <Input 
+      <Input
         placeholder="Bio"
         onChange={(e) => setBio(e.target.value)}
         value={bio}
-        disabled={isLoading} 
+        disabled={isLoading}
       />
     </div>
   )
